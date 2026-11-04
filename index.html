@@ -130,7 +130,10 @@ section.page.active{display:block;animation:fade .25s ease}
 table{border-collapse:collapse;width:100%;font-size:13px}
 thead th{position:sticky;top:0;background:var(--navy);color:#fff;text-align:left;padding:10px 8px;font-weight:600;font-size:12.5px;cursor:pointer;user-select:none;vertical-align:middle;line-height:1.3}
 thead th.num{min-width:84px}
-tbody td:first-child{min-width:190px}
+thead th[data-k="puesto"]{min-width:0;width:58px;text-align:center}
+td.rank{text-align:center!important}
+td.rank{font-weight:700;color:var(--navy);white-space:nowrap}
+tbody td:nth-child(2){min-width:180px}
 thead th.num,td.num{text-align:right}
 thead th .ar{opacity:.6;font-size:10px;margin-left:4px}
 tbody td{padding:8px 8px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
@@ -143,6 +146,18 @@ td .flat{color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30px}
 .method{font-size:12.5px;color:var(--ink-2)}
 .method li{margin-bottom:4px}
+.rk-card{background:#fff;border-radius:var(--radius);box-shadow:0 1px 3px rgba(19,9,83,.08);padding:20px 22px;margin-bottom:18px}
+.rk-card h3{margin:0 0 6px;color:var(--navy);font-size:17px}
+.rk-card p{margin:0 0 12px;color:var(--ink-2);font-size:14px}
+.rk-formula{background:var(--navy);color:#fff;border-radius:12px;padding:14px 16px;text-align:center;font-weight:700;font-size:clamp(14px,1.8vw,17px);margin:6px 0 16px}
+.rk-formula span{color:#8fe39a}
+.rk-parts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:820px){.rk-parts{grid-template-columns:1fr}}
+.rk-part{border:1px solid var(--line);border-top:5px solid var(--green);border-radius:12px;padding:14px;font-size:13.5px;color:var(--ink-2)}
+.rk-part .w{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:2px 10px;font-weight:700;font-size:12px;margin-bottom:6px}
+.rk-part b.t{display:block;color:var(--navy);font-size:15px;margin-bottom:4px}
+.rk-part .ex{margin-top:8px;background:#f3f4f9;border-radius:8px;padding:8px 10px;font-size:12.5px}
+.rk-foot{margin-top:14px;font-size:13px;color:var(--ink-2)}
 </style>
 </head>
 <body>
@@ -252,10 +267,21 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
   </div>
 
   <div class="band">Análisis comparativo por IED</div>
+  <div class="rk-card">
+    <h3>¿Cómo se calcula el ranking del reto?</h3>
+    <p>Cada colegio recibe un <b>Puntaje del reto</b> de 0 a 100 que combina tres aspectos de su participación desde junio, mes de inicio del reto. Los colegios se ordenan de mayor a menor puntaje; en caso de empate, se ubica primero el de mayor IMGRE promedio.</p>
+    <div class="rk-formula">Puntaje del reto = <span>60%</span> Nivel de gestión + <span>20%</span> Mejora + <span>20%</span> Constancia</div>
+    <div class="rk-parts">
+      <div class="rk-part"><span class="w">60%</span><b class="t">Nivel de gestión</b>Promedio del IMGRE del colegio en los meses que ha reportado desde junio.<div class="ex">Ejemplo: IMGRE de 60, 70 y 80 en tres meses → nivel de gestión = 70.</div></div>
+      <div class="rk-part"><span class="w">20%</span><b class="t">Mejora</b>Compara el IMGRE del último mes reportado con el del primer mes reportado desde junio. Parte de 50 puntos: sube si el colegio mejoró y baja si retrocedió (50 + variación ÷ 2). Con un solo mes reportado, la mejora es 50.<div class="ex">Ejemplo: pasó de 50 a 70 (+20) → mejora = 50 + 10 = 60.</div></div>
+      <div class="rk-part"><span class="w">20%</span><b class="t">Constancia</b>Proporción de meses del reto en los que el colegio reportó en RESIDATA, sobre 100.<div class="ex">Ejemplo: reportó 3 de 4 meses → constancia = 75.</div></div>
+    </div>
+    <div class="rk-foot"><b>Ejemplo completo:</b> 0,60 × 70 + 0,20 × 60 + 0,20 × 75 = 42 + 12 + 15 = <b>69 puntos</b>. El ranking se actualiza cada vez que se incorpora un nuevo mes de reporte. Mantener un buen IMGRE, mejorar mes a mes y reportar todos los meses son las tres formas de subir en el ranking. Pase el cursor sobre el puntaje de cada colegio en la tabla para ver su detalle.</div>
+  </div>
   <div class="card">
     <div class="tbl-tools"><input id="tSearch" placeholder="Buscar colegio en la tabla…"><span class="note" id="tNote"></span></div>
     <div class="tbl-wrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
-    <p class="method" style="margin:10px 2px 0">Haga clic en un encabezado para ordenar y en una fila para filtrar el tablero por ese colegio. <b>Variación acumulada</b> = IMGRE del último mes reportado − IMGRE del primer mes reportado desde junio (inicio del reto). <b>Variación mes anterior</b> = IMGRE del último mes reportado − IMGRE del reporte inmediatamente anterior. Pase el cursor sobre una variación para ver los meses comparados. ▲ mejora · ▼ disminuye.</p>
+    <p class="method" style="margin:10px 2px 0">Haga clic en un encabezado para ordenar y en una fila para filtrar el tablero por ese colegio. El <b>puesto</b> es la posición general entre todos los colegios y no cambia al aplicar filtros. <b>Variación acumulada</b> = IMGRE del último mes reportado − IMGRE del primer mes reportado desde junio (inicio del reto). <b>Variación mes anterior</b> = IMGRE del último mes reportado − IMGRE del reporte inmediatamente anterior. Pase el cursor sobre una variación para ver los meses comparados. ▲ mejora · ▼ disminuye.</p>
   </div>
 
 </section>
@@ -373,8 +399,25 @@ function hbars(sel, items, n, unit){
 }
 
 /* ---------- tabla ---------- */
-let sortKey = 'var', sortDir = -1;
+let sortKey = 'punt', sortDir = -1;
 const INICIO_RETO = MONTHS.indexOf('Junio');
+/* Ranking del reto: 60% IMGRE promedio + 20% mejora + 20% constancia (meses desde junio) */
+const mesesReto = mesesData.filter(m => MONTHS.indexOf(m) >= INICIO_RETO);
+const RANK = (() => {
+  const by = {};
+  R.forEach(r => { if (mesesReto.includes(r[2])) (by[r[0]] ??= {})[r[2]] = r[3]; });
+  const list = Object.entries(by).map(([col, o]) => {
+    const rep = mesesReto.filter(m => o[m] != null);
+    const prom = mean(rep.map(m => o[m]));
+    const varR = rep.length >= 2 ? o[rep[rep.length-1]] - o[rep[0]] : 0;
+    const mejora = Math.max(0, Math.min(100, 50 + varR/2));
+    const constancia = 100 * rep.length / mesesReto.length;
+    return {col, prom, varR, mejora, constancia, n: rep.length, punt: 0.6*prom + 0.2*mejora + 0.2*constancia};
+  });
+  list.sort((a,b) => b.punt - a.punt || b.prom - a.prom);
+  const out = {}; list.forEach((x,i) => { x.puesto = i+1; out[x.col] = x; });
+  out._n = list.length; return out;
+})();
 function tableRows(){
   const base = R.filter(r => (!st.loc || r[1]===st.loc));
   const by = {};
@@ -386,6 +429,7 @@ function tableRows(){
     o.var = o.varTip = o.varAnt = o.varAntTip = null;
     if (repReto.length >= 2) { const first = repReto[0]; o.var = o[last] - o[first]; o.varTip = `${last} − ${first}`; }
     if (rep.length >= 2) { const prev = rep[rep.length-2]; o.varAnt = o[last] - o[prev]; o.varAntTip = `${last} − ${prev}`; }
+    const k = RANK[o.col]; o.punt = k ? k.punt : null; o.puesto = k ? k.puesto : null; o.rk = k;
     return o;
   });
 }
@@ -400,16 +444,23 @@ function varCell(v, tipTxt){
   const html = v>0 ? `<span class="up">▲ ${nf2.format(v)}</span>` : v<0 ? `<span class="down">▼ ${nf2.format(Math.abs(v))}</span>` : '<span class="flat">0,00</span>';
   return `<td class="num" data-tip="IMGRE ${tipTxt}">${html}</td>`;
 }
+function rankCells(o){
+  const k = o.rk;
+  if (!k) return '<td class="num"><span class="flat">–</span></td><td class="num" data-tip="Sin reportes desde junio"><span class="flat">–</span></td>';
+  const tip = `<b>Puntaje del reto: ${nf2.format(k.punt)}</b><br>IMGRE promedio (60%): ${nf2.format(k.prom)}<br>Mejora (20%): ${nf2.format(k.mejora)} (variación ${k.varR>=0?'+':'−'}${nf2.format(Math.abs(k.varR))})<br>Constancia (20%): ${nf0.format(k.constancia)} (${k.n} de ${mesesReto.length} meses)`;
+  const medal = k.puesto <= 5 ? ['🥇','🥈','🥉','🏅','🏅'][k.puesto-1] + ' ' : '';
+  return `<td class="num rank">${medal}${k.puesto}</td><td class="num" data-tip="${tip}"><b>${nf2.format(k.punt)}</b></td>`;
+}
 function renderTable(){
-  const cols = [['col','Institución educativa distrital',0],['loc','Localidad',0], ...mesesData.map(m => [m,'Indicador '+m,1]), ['var','Variación acumulada',1], ['varAnt','Variación mes anterior',1]];
+  const cols = [['puesto','Puesto',1],['col','Institución educativa distrital',0],['loc','Localidad',0],['punt','Puntaje del reto',1], ...mesesData.map(m => [m,'Indicador '+m,1]), ['var','Variación acumulada',1], ['varAnt','Variación mes anterior',1]];
   $('#tbl thead').innerHTML = '<tr>' + cols.map(([k,l,n]) => `<th data-k="${k}" class="${n?'num':''}">${l}<span class="ar">${sortKey===k?(sortDir>0?'▲':'▼'):'↕'}</span></th>`).join('') + '</tr>';
   const q = $('#tSearch').value.trim().toLowerCase();
   let rows = tableRows().filter(o => !q || o.col.toLowerCase().includes(q));
   rows.sort((a,b) => { const x=a[sortKey], y=b[sortKey]; if (x==null && y==null) return 0; if (x==null) return 1; if (y==null) return -1; return (typeof x==='string' ? x.localeCompare(y,'es') : x-y) * sortDir; });
-  $('#tbl tbody').innerHTML = rows.map(o => `<tr data-col="${esc(o.col)}" class="${o.col===st.col?'sel':''}" style="cursor:pointer"><td>${esc(o.col)}</td><td>${esc(o.loc)}</td>${mesesData.map(m=>`<td class="num">${heat(o[m])}</td>`).join('')}${varCell(o.var,o.varTip)}${varCell(o.varAnt,o.varAntTip)}</tr>`).join('');
+  $('#tbl tbody').innerHTML = rows.map(o => { const rc = rankCells(o).split('</td>'); return `<tr data-col="${esc(o.col)}" class="${o.col===st.col?'sel':''}" style="cursor:pointer">${rc[0]}</td><td>${esc(o.col)}</td><td>${esc(o.loc)}</td>${rc[1]}</td>${mesesData.map(m=>`<td class="num">${heat(o[m])}</td>`).join('')}${varCell(o.var,o.varTip)}${varCell(o.varAnt,o.varAntTip)}</tr>`; }).join('');
   $('#tNote').textContent = `${rows.length} colegios`;
 }
-$('#tbl thead').addEventListener('click', e => { const th = e.target.closest('th'); if (!th) return; const k = th.dataset.k; if (sortKey===k) sortDir*=-1; else { sortKey=k; sortDir = (k==='col'||k==='loc') ? 1 : -1; } renderTable(); });
+$('#tbl thead').addEventListener('click', e => { const th = e.target.closest('th'); if (!th) return; const k = th.dataset.k; if (sortKey===k) sortDir*=-1; else { sortKey=k; sortDir = (k==='col'||k==='loc'||k==='puesto') ? 1 : -1; } renderTable(); });
 $('#tbl tbody').addEventListener('click', e => { const tr = e.target.closest('tr'); if (!tr) return; const c = tr.dataset.col; st.col = (st.col===c) ? '' : c; $('#fCol').value = st.col; render(); document.querySelector('#tablero .filters').scrollIntoView({behavior:'smooth'}); });
 $('#tSearch').addEventListener('input', renderTable);
 
