@@ -166,6 +166,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
 .rk-part b.t{display:block;color:var(--navy);font-size:15px;margin-bottom:4px}
 .rk-part .ex{margin-top:8px;background:#f3f4f9;border-radius:8px;padding:8px 10px;font-size:12.5px}
 .rk-foot{margin-top:14px;font-size:13px;color:var(--ink-2)}
+.rk-purpose{background:#eafbe9;border-left:5px solid var(--green);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--ink);margin:6px 0 10px}
+.rk-ref{background:#eef0f8;border-left:5px solid var(--navy);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -276,22 +278,25 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 16px 30p
 
   <div class="band">Análisis comparativo por IED</div>
   <div class="rk-card">
-    <h3>¿Cómo se calcula el ranking del reto?</h3>
-    <p>Cada colegio recibe un <b>Puntaje del reto</b> de 0 a 100 que combina tres aspectos de su participación desde junio, mes de inicio del reto. Los colegios se ordenan de mayor a menor puntaje; en caso de empate, se ubica primero el de mayor IMGRE promedio.</p>
-    <div class="rk-formula">Puntaje del reto = <span>60%</span> Nivel de gestión + <span>20%</span> Mejora + <span>20%</span> Constancia</div>
+    <h3>Ranking del reto Código Residuo</h3>
+    <div class="rk-purpose"><b>¿Para qué sirve este ranking?</b> Es una herramienta de <b>seguimiento y reconocimiento de los avances institucionales de los colegios en el marco del reto</b>. No constituye una evaluación integral de la gestión ambiental de las IED. Su propósito es promover transformaciones en las prácticas de gestión de residuos, utilizando la información reportada en RESIDATA como insumo para la reflexión y la toma de decisiones en cada institución.</div>
+    <div class="rk-ref"><b>Meses de referencia:</b> el cálculo toma únicamente los <b>3 meses establecidos para el reporte del reto: julio, agosto y septiembre de 2026</b>. Los meses de mayo y junio se muestran en la tabla como información de contexto, pero no se incluyen en el puntaje.</div>
+    <h3 style="margin-top:16px">¿Cómo se calcula?</h3>
+    <p>Cada colegio recibe un <b>Puntaje del reto</b> de 0 a 100 que combina tres aspectos de su desempeño en los meses de referencia. Los colegios se ordenan de mayor a menor puntaje; en caso de empate, se ubica primero el de mayor nivel de gestión.</p>
+    <div class="rk-formula">Puntaje del reto = <span>60%</span> Nivel de gestión + <span>30%</span> Mejora + <span>10%</span> Constancia</div>
     <div class="rk-parts">
-      <div class="rk-part"><span class="w">60%</span><b class="t">Nivel de gestión</b>Promedio del IMGRE del colegio en los meses que ha reportado desde junio.<div class="ex">Ejemplo: IMGRE de 60, 70 y 80 en tres meses → nivel de gestión = 70.</div></div>
-      <div class="rk-part"><span class="w">20%</span><b class="t">Mejora</b>Compara el IMGRE del último mes reportado con el del primer mes reportado desde junio. Parte de 50 puntos: sube si el colegio mejoró y baja si retrocedió (50 + variación ÷ 2). Con un solo mes reportado, la mejora es 50.<div class="ex">Ejemplo: pasó de 50 a 70 (+20) → mejora = 50 + 10 = 60.</div></div>
-      <div class="rk-part"><span class="w">20%</span><b class="t">Constancia</b>Proporción de meses del reto en los que el colegio reportó en RESIDATA, sobre 100.<div class="ex">Ejemplo: reportó 3 de 4 meses → constancia = 75.</div></div>
+      <div class="rk-part"><span class="w">60%</span><b class="t">Nivel de gestión</b>Promedio del IMGRE del colegio en los meses de referencia (julio, agosto y septiembre) que reportó.<div class="ex">Ejemplo: IMGRE de 60, 70 y 80 → nivel de gestión = 70.</div></div>
+      <div class="rk-part"><span class="w">30%</span><b class="t">Mejora</b>Compara el IMGRE del último mes reportado con el del primer mes reportado entre julio y septiembre. Parte de 50 puntos: sube si el colegio mejoró y baja si retrocedió (50 + variación ÷ 2). Con un solo mes reportado, la mejora es 50.<div class="ex">Ejemplo: pasó de 50 en julio a 70 en septiembre (+20) → mejora = 50 + 10 = 60.</div></div>
+      <div class="rk-part"><span class="w">10%</span><b class="t">Constancia</b>Proporción de los 3 meses de referencia en los que el colegio reportó en RESIDATA, sobre 100.<div class="ex">Ejemplo: reportó 2 de 3 meses → constancia = 66,7.</div></div>
     </div>
-    <div class="rk-foot"><b>Ejemplo completo:</b> 0,60 × 70 + 0,20 × 60 + 0,20 × 75 = 42 + 12 + 15 = <b>69 puntos</b>. El ranking se actualiza cada vez que se incorpora un nuevo mes de reporte. Mantener un buen IMGRE, mejorar mes a mes y reportar todos los meses son las tres formas de subir en el ranking. Pase el cursor sobre el puntaje de cada colegio en la tabla para ver su detalle.</div>
+    <div class="rk-foot"><b>Ejemplo completo:</b> 0,60 × 70 + 0,30 × 60 + 0,10 × 66,7 = 42 + 18 + 6,7 = <b>66,7 puntos</b>. Se reconocen los <b>tres primeros lugares</b> (🥇 🥈 🥉). Pase el cursor sobre el puntaje de cada colegio en la tabla para ver su detalle.</div>
   </div>
   <div class="card">
     <div class="tbl-tools"><input id="tSearch" placeholder="Buscar colegio en la tabla…"><span class="note" id="tNote"></span></div>
     <div class="pager" id="pagerTop"></div>
     <div class="tbl-wrap" id="tblWrap" style="margin-top:10px"><table id="tbl"><thead></thead><tbody></tbody></table></div>
     <div class="pager" id="pagerBot"></div>
-    <p class="method" style="margin:10px 2px 0">Use los botones <b>Anterior / Siguiente</b> o el selector «Ver» para recorrer todos los colegios. Haga clic en un encabezado para ordenar y en una fila para filtrar el tablero por ese colegio. El <b>puesto</b> es la posición general entre todos los colegios y no cambia al aplicar filtros. <b>Variación acumulada</b> = IMGRE del último mes reportado − IMGRE del primer mes reportado desde junio (inicio del reto). <b>Variación mes anterior</b> = IMGRE del último mes reportado − IMGRE del reporte inmediatamente anterior. Pase el cursor sobre una variación para ver los meses comparados. ▲ mejora · ▼ disminuye.</p>
+    <p class="method" style="margin:10px 2px 0">Use los botones <b>Anterior / Siguiente</b> o el selector «Ver» para recorrer todos los colegios. Haga clic en un encabezado para ordenar y en una fila para filtrar el tablero por ese colegio. El <b>puesto</b> es la posición general entre todos los colegios y no cambia al aplicar filtros. <b>Variación acumulada</b> = IMGRE del último mes reportado − IMGRE del primer mes reportado entre julio y septiembre (meses de referencia del reto). <b>Variación mes anterior</b> = IMGRE del último mes reportado − IMGRE del reporte inmediatamente anterior. Pase el cursor sobre una variación para ver los meses comparados. ▲ mejora · ▼ disminuye.</p>
   </div>
 
 </section>
@@ -411,9 +416,11 @@ function hbars(sel, items, n, unit){
 /* ---------- tabla ---------- */
 let sortKey = 'punt', sortDir = -1;
 let page = 1, pageSize = 20;
-const INICIO_RETO = MONTHS.indexOf('Junio');
-/* Ranking del reto: 60% IMGRE promedio + 20% mejora + 20% constancia (meses desde junio) */
-const mesesReto = mesesData.filter(m => MONTHS.indexOf(m) >= INICIO_RETO);
+const INICIO_RETO = MONTHS.indexOf('Julio');
+/* Ranking del reto: 60% nivel de gestión + 30% mejora + 10% constancia.
+   Meses de referencia definidos para el reporte del reto: julio, agosto y septiembre */
+const MESES_REFERENCIA = ['Julio','Agosto','Septiembre'];
+const mesesReto = MESES_REFERENCIA.filter(m => mesesData.includes(m));
 const RANK = (() => {
   const by = {};
   R.forEach(r => { if (mesesReto.includes(r[2])) (by[r[0]] ??= {})[r[2]] = r[3]; });
@@ -423,7 +430,7 @@ const RANK = (() => {
     const varR = rep.length >= 2 ? o[rep[rep.length-1]] - o[rep[0]] : 0;
     const mejora = Math.max(0, Math.min(100, 50 + varR/2));
     const constancia = 100 * rep.length / mesesReto.length;
-    return {col, prom, varR, mejora, constancia, n: rep.length, punt: 0.6*prom + 0.2*mejora + 0.2*constancia};
+    return {col, prom, varR, mejora, constancia, n: rep.length, punt: 0.6*prom + 0.3*mejora + 0.1*constancia};
   });
   list.sort((a,b) => b.punt - a.punt || b.prom - a.prom);
   const out = {}; list.forEach((x,i) => { x.puesto = i+1; out[x.col] = x; });
@@ -457,9 +464,9 @@ function varCell(v, tipTxt){
 }
 function rankCells(o){
   const k = o.rk;
-  if (!k) return '<td class="num"><span class="flat">–</span></td><td class="num" data-tip="Sin reportes desde junio"><span class="flat">–</span></td>';
-  const tip = `<b>Puntaje del reto: ${nf2.format(k.punt)}</b><br>IMGRE promedio (60%): ${nf2.format(k.prom)}<br>Mejora (20%): ${nf2.format(k.mejora)} (variación ${k.varR>=0?'+':'−'}${nf2.format(Math.abs(k.varR))})<br>Constancia (20%): ${nf0.format(k.constancia)} (${k.n} de ${mesesReto.length} meses)`;
-  const medal = k.puesto <= 5 ? ['🥇','🥈','🥉','🏅','🏅'][k.puesto-1] + ' ' : '';
+  if (!k) return '<td class="num"><span class="flat">–</span></td><td class="num" data-tip="Sin reportes en julio, agosto o septiembre"><span class="flat">–</span></td>';
+  const tip = `<b>Puntaje del reto: ${nf2.format(k.punt)}</b><br>Nivel de gestión (60%): ${nf2.format(k.prom)}<br>Mejora (30%): ${nf2.format(k.mejora)} (variación ${k.varR>=0?'+':'−'}${nf2.format(Math.abs(k.varR))})<br>Constancia (10%): ${nf0.format(k.constancia)} (${k.n} de ${mesesReto.length} meses)`;
+  const medal = k.puesto <= 3 ? ['🥇','🥈','🥉'][k.puesto-1] + ' ' : '';
   return `<td class="num rank">${medal}${k.puesto}</td><td class="num" data-tip="${tip}"><b>${nf2.format(k.punt)}</b></td>`;
 }
 function renderTable(){
